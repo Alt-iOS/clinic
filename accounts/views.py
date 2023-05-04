@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
-from .forms import LoginForm, UserRegistrationForm, PatientRegistrationForm, ShowPatientInfoForm
+from .forms import LoginForm, UserRegistrationForm, PatientRegistrationForm, PatientRequestForm
 from django.contrib.auth.decorators import user_passes_test
 from .models import Patient
 
@@ -80,7 +80,7 @@ def register_patient(request):
 
 
 def show_patient_info(request):
-    form = ShowPatientInfoForm(request.POST or None)
+    form = PatientRequestForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
         public_id = form.cleaned_data['public_id']
         patient = Patient.objects.get(public_id=public_id)

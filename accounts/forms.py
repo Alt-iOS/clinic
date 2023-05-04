@@ -46,7 +46,5 @@ class PatientRegistrationForm(forms.ModelForm):
         }
 
 
-class ShowPatientInfoForm(forms.Form):
+class PatientRequestForm(forms.Form):
     public_id = forms.CharField(label='Public ID', max_length=10)
-
-
