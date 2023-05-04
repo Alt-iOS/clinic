@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Get Patient</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Get Patient</button>
+    </form>
+  {% if patient %}
+    <h1>Patient Details</h1>
+    <p>Name: {{ patient.name }}</p>
+    <p>Surname: {{ patient.surname }}</p>
+    <p>Date of Birth: {{ patient.date_of_birth }}</p>
+    <p>Sex: {{ patient.sex }}</p>
+    <p>Height: {{ patient.height }}</p>
+    <p>Starting Weight: {{ patient.starting_weight }}</p>
+    <p>Aerobics: {{ patient.aerobics }}</p>
+    <p>Recent Weight: {{ patient.recent_weight }}</p>
+  {% endif %}
+{% endblock %}

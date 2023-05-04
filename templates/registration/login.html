@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title%} Login into the clinc app! {% endblock %}
+{% block content %}
+<h1>Login</h1>
+{% if form.errors %}
+{% else %}
+<p>Please, fill out the form to login:</p>
+{% endif %}
+<div class="login-form">
+    <form method="post" action="{% url 'login' %}">
+        {{ form.as_pww }}
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}" />
+        <p><input type="submit" value="Login"></p>
+        <a class="btn btn-primary" href="/patient-info">Patient info</a>
+    </form>
+</div>
+{% endblock %}
+
+

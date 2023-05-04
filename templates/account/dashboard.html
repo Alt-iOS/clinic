@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %} Dashboard {% endblock %}
+{% block content %} 
+    <h1>Dashboard</h1>
+    {% if request.user.is_superuser == 1 %}
+        <p> Welcome back Nutritiologist {{ request.user.first_name|default:request.user.username }} </p>
+    {% elif request.user.is_staff == 1%}
+        <p> Welcome back Assistant {{ request.user.first_name|default:request.user.username }}</p>
+    {% endif %}
+    {% if patients_info %}
+        <table>
+            <thead>
+                <tr>Name</tr>
+                <tr>Last Name</tr>
+                <tr> Sex</tr>
+                <tr> Aerobics</tr>
+                <tr> Date of Birth</tr>
+                <tr> Height</tr>
+                <tr> Starting Weight</tr>
+                <tr> Most recent Weight</tr>
+                <tr> Public ID</tr>
+            </thead>
+            {% for p in patients_info %}
+                <tbody>
+                    <tr>
+                        <td>{{ p.name }}</td>
+                        <td>{{ p.surname }}</td>
+                        <td>{{ p.sex }}</td>
+                        <td>{{ p.aerobics }}</td>
+                        <td>{{ p.date_of_birth|default:"******" }}</td>
+                        <td>{{ p.height|default:"******" }}</td>
+                        <td>{{ p.starting_weight|default:"******" }}</td>
+                        <td>{{ p.recent_weight|default:"******" }}</td>
+                        <td>{{ p.public_id|default_if_none:"******" }}</td>
+                    </tr>
+                </tbody>
+            {% endfor %}
+        </table>
+    {% else %}
+            <p>No patient info available.</p>
+    {% endif %}
+{% endblock %}
+
+
