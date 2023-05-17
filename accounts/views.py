@@ -86,3 +86,4 @@ def show_patient_info(request):
         patient = Patient.objects.get(public_id=public_id)
         return render(request, 'account/patient_info.html', {'patient': patient, 'form': form})
     return render(request, 'account/patient_info.html', {'form': form})
+

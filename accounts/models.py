@@ -28,9 +28,11 @@ class Appointment(models.Model):
     date = models.DateField(blank=False, null=True, default=datetime.date.today)
     new_weight = models.FloatField(max_length=6, null=False)
     observations = models.CharField(max_length=200, null=False)
+    BMI = models.FloatField( max_length=3, null=True)
 
     def save(self, *args, **kwargs):
         most_recent_appt = Appointment.objects.filter(patient=self.patient).order_by('-date').first()
         self.patient.recent_weight = most_recent_appt.new_weight
         self.patient.save()
+        self.BMI = self.new_weight/self.patient.height ** 2
         super(Appointment, self).save(*args, **kwargs)
