@@ -9,7 +9,9 @@
 <form method="post">
     {{user_form.as_p}}
     {% csrf_token %}
-    <p><input type="submit" value="Create  account"></p>
+    <ul class="login2">
+        <p><input style="font-size: 2rem" type="submit" value="Create  account"></p>
+    </ul>
 </form>
 {% endblock %}
 

@@ -39,7 +39,7 @@ class PatientRegistrationForm(forms.ModelForm):
                    }
         labels = {
             'name': 'Name',
-            'surname': 'last name',
+            'surname': 'Last name',
             'height': 'Height (m)',
             'starting_weight': 'Starting weight (kg)',
             'aerobics': 'Does the patient do aerobics?',

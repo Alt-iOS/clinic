@@ -1,0 +1,107 @@
+body {
+    background-color: #91CAFF;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%23906ec4' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%2314a69d' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%236a5ec5' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%2351889d' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%23606fb3' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%235d7ba7' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%236486ab' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%235862a4' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%236ba6b6' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%234a4a93' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%235ea49d' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%236c639e' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Comfortaa', cursive;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 2000px;
+    height: 1000px;
+    border-radius: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgb(5, 61, 107, 0.60);
+    opacity: 0.9;
+  }
+
+.login-container span {
+    font-size: 1.3rem;
+    color: white;
+}
+
+.login2 input{
+    display: block;
+    padding: 10px 20px;
+    background-color: #00d9ff;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 0 auto;
+    border-color: #00d9ff;
+}
+
+.login2 a{
+    display: block;
+    padding: 10px 20px;
+    background-color: #00d9ff;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+.login2 input:hover {
+    background-color: #0062ff;
+}
+
+.login2 a:hover {
+    background-color: #0062ff;
+}
+
+  .menu {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu li {
+    margin: 10px 0;
+  }
+
+  .menu li a {
+    display: block;
+    padding: 10px 20px;
+    background-color: #8B5BCC;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+  .menu li a:hover {
+    background-color: #8B5BCC;
+  }
+
+  .user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .user a {
+    display: block;
+    margin: 10px 0;
+    padding: 8px 12px;
+    background-color: #8B5BCC;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 4px;
+  }
+
+  .user a:hover {
+    background-color: #8B5BCC;
+  }

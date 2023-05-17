@@ -14,10 +14,11 @@ class Patient(models.Model):
     recent_weight = models.FloatField(max_length=6, null=False)
     public_id = models.CharField(max_length=10, null=False, unique=True)
 
+
     def save(self, *args, **kwargs):
         if self.recent_weight is None:
             self.recent_weight = self.starting_weight
-        if self.public_id is None:
+        if self.public_id.__eq__(''):
             self.public_id = ''.join(random.choices(self.name + self.surname, k=10))
         super(Patient, self).save(*args, **kwargs)
 
