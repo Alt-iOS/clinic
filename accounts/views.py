@@ -56,10 +56,14 @@ class PatientListView(ListView):
     context_object_name = 'patients_info'
     paginate_by = 5
     template_name = 'account/dashboard.html'
-    ordering = ['surname']
 
     def get_queryset(self):
         return Patient.objects.filter(active=True).values()
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(PatientListView, self).get_context_data(**kwargs)
+        context['patients_info'] = sorted(context['patients_info'], key=lambda x: (x['surname'].lower(), x['surname']))
+        return context
 
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
