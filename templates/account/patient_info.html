@@ -1,6 +1,20 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
 
-{% block content %}
+    <link href="{% static "css/style.css" %}" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap" rel="stylesheet">
+</head>
+<body style="font-size: 30px">
+
+    <div class="login-container">
+      <div id="content">
+        {% block content %}
     <h1>Get Patient</h1>
     <form method="post">
       {% csrf_token %}
@@ -43,4 +57,12 @@
         {% else %}
             <p>No appointments for patient available.</p>
         {% endif %}
-{% endblock %}
+    {% endblock %}
+        </div>
+
+    </div>
+
+</body>
+</html>
+
+
