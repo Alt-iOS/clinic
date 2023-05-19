@@ -128,7 +128,7 @@ def appointment_view(request, public_id):
     if len(appointments) == 0:
         this_appointment = {'BMI': '0 appointments'}
         second_last_appointments = {'BMI': '0 appointments'}
-    elif len(appointments) > 0:
+    elif len(appointments) < 2:
         this_appointment = appointments[0]
         second_last_appointments = {'BMI': 'Only one appointment'}
     else:
