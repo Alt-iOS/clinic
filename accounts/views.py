@@ -42,7 +42,7 @@ def dashboard(request):
     if request.user.is_superuser:
         patients_info = Patient.objects.filter(active=True).values()
     elif request.user.is_staff:
-        patients_info = Patient.objects.filter(active=True).values('name', 'surname', 'sex', 'aerobics')
+        patients_info = Patient.objects.filter(active=True).values('name', 'surname', 'sex', 'aerobics', 'public_id')
     else:
         return HttpResponse('You are not authorized to view this page')
     patients_info = sorted(patients_info, key=lambda x:  (x['surname'].lower(), x['surname']))
