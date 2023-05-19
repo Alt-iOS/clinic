@@ -92,7 +92,7 @@ def register_patient(request):
         if patient_form.is_valid():
             new_patient = patient_form.save(commit=False)
             new_patient.save()
-            return render(request, 'account/register_done.html', {'new_patient': new_patient, 'section': 'patient registration'})
+            return dashboard(request)
     else:
         patient_form = PatientRegistrationForm()
         return render(request, 'account/register.html', {'user_form': patient_form, 'section': 'patient registration'})
