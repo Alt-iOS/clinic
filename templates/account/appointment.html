@@ -7,9 +7,7 @@
         <h1 style="color: white">Dashboard</h1>
         <p style="color: white"> Appointments for {{ patient.name }} {{ patient.surname }} </p>
     </div>
-    <span style="font-size: 2rem" class="user">
-        <a href="{% url 'dashboard' %}">Return to dashboard</a>
-    </span>
+
     <span style="font-size: 2rem" class="user">
         <form method="post">
             {% csrf_token %}

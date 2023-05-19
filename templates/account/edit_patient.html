@@ -6,9 +6,6 @@
         <h1 style="color: white">Edit patient info for {{ patient.name }} {{ patient.surname }}</h1>
     </div>
 
-    <span style="font-size: 2rem" class="user">
-        <a href="{% url 'dashboard' %}">Return to dashboard</a>
-    </span>
 
     <form method="post">
         {% csrf_token %}
