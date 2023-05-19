@@ -97,7 +97,9 @@ def show_patient_info(request):
     if request.method == 'POST' and form.is_valid():
         public_id = form.cleaned_data['public_id']
         patient = Patient.objects.get(public_id=public_id)
-        return render(request, 'account/patient_info.html', {'patient': patient, 'form': form})
+        appointments = Appointment.objects.filter(patient=patient).values()
+        appointments = sorted(appointments, key=lambda x: x['date'], reverse=True)
+        return render(request, 'account/patient_info.html', {'patient': patient, 'form': form, 'appointments': appointments})
     return render(request, 'account/patient_info.html', {'form': form})
 
 
