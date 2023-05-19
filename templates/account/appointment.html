@@ -1,4 +1,3 @@
-<link href="{% static "css/style.css" %}" rel="stylesheet">
 {% extends "base.html" %}
 {% block title %} Appointment {% endblock %}
 {% block content %}
@@ -8,16 +7,16 @@
         <h1 style="color: white">Dashboard</h1>
         <p style="color: white"> Appointments for {{ patient.name }} {{ patient.surname }} </p>
     </div>
-
-    <a href="{% url 'dashboard' %}">
-        <button class="boton"> Return to dashboard </button>
-    </a>
-
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-            <button type="submit">Save appointment</button>
-    </form>
+    <span style="font-size: 2rem" class="user">
+        <a href="{% url 'dashboard' %}">Return to dashboard</a>
+    </span>
+    <span style="font-size: 2rem" class="user">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+                <button type="submit">Save appointment</button>
+        </form>
+    </span>
 
     <div>
         <p> NEWEST BMI {{ this.BMI }}</p>

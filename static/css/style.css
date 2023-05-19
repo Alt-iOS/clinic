@@ -6,10 +6,9 @@ body {
     font-family: 'Comfortaa', cursive;
 }
 .boton{
-    display: block;
+    color: #00d9ff;
     padding: 10px 20px;
     background-color: #00d9ff;
-    color: #ffffff;
     text-decoration: none;
     border-radius: 5px;
     margin: 0 auto;
