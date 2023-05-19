@@ -13,7 +13,9 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <Container style="font-size: 2rem" class="user"><button type="submit">Save changes</button></Container>
+        <ul class="login2">
+                <p><input style="font-size: 2rem" type="submit" value="Submit"></p>
+            </ul>
     </form>
 {% endblock %}
 

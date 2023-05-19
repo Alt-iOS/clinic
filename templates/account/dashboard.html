@@ -10,14 +10,13 @@
         <p style="color: white"> Welcome back Assistant {{ request.user.first_name|default:request.user.username }}</p>
     {% endif %}
     </div>
+    <span style="font-size: 2rem" class="user">
+        <a href="{% url 'dashboard_paginated' %}">Paginated view</a>
+    </span>
+    <span style="font-size: 2rem" class="user">
+        <a href="{% url 'dashboard' %}">List view</a>
+    </span>
 
-    <a href="{% url 'dashboard_paginated' %}">
-        <button> Paginated view </button>
-    </a>
-
-    <a href="{% url 'dashboard' %}">
-        <button> List view </button>
-    </a>
 
     {% if patients_info %}
         <table style="color: white; background-color: #8B5BCC" align="center">
