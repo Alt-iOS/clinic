@@ -1,6 +1,8 @@
+<link href="{% static "css/style.css" %}" rel="stylesheet">
 {% extends "base.html" %}
 {% block title %} Appointment {% endblock %}
 {% block content %}
+
 
     <div style="text-align: center;">
         <h1 style="color: white">Dashboard</h1>
@@ -8,7 +10,7 @@
     </div>
 
     <a href="{% url 'dashboard' %}">
-        <button> Return to dashboard </button>
+        <button class="boton"> Return to dashboard </button>
     </a>
 
     <form method="post">
