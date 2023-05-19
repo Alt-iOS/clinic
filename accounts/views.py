@@ -58,6 +58,8 @@ class PatientListView(ListView):
     template_name = 'account/dashboard.html'
     ordering = ['surname']
 
+    def get_queryset(self):
+        return Patient.objects.filter(active=True).values()
 
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
