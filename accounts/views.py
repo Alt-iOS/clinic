@@ -115,20 +115,22 @@ def appointment_view(request, public_id):
             new_appointment.save()
             appointments = Appointment.objects.filter(patient=patient).values()
             appointments = sorted(appointments, key=lambda x: x['date'], reverse=True)
-            this_appointment = appointments[0]
-            second_last_appointments = appointments[1]
-            return render(request, 'account/appointment.html', {'form': appointment_form, 'appointments': appointments,
-                                                                'patient': patient, 'this': this_appointment,
-                                                                'second_last_appointments': second_last_appointments})
     else:
         appointments = Appointment.objects.filter(patient=patient).values()
         appointments = sorted(appointments, key=lambda x: x['date'], reverse=True)
         appointment_form = AppointmentForm()
+    if len(appointments) == 0:
+        this_appointment = {'BMI': '0 appointments'}
+        second_last_appointments = {'BMI': '0 appointments'}
+    elif len(appointments) > 0:
+        this_appointment = appointments[0]
+        second_last_appointments = {'BMI': 'Only one appointment'}
+    else:
         this_appointment = appointments[0]
         second_last_appointments = appointments[1]
-        return render(request, 'account/appointment.html', {'form': appointment_form, 'appointments': appointments,
-                                                            'patient': patient, 'this': this_appointment,
-                                                            'second_last_appointments': second_last_appointments})
+    return render(request, 'account/appointment.html', {'form': appointment_form, 'appointments': appointments,
+                                                        'patient': patient, 'this': this_appointment,
+                                                        'second_last_appointments': second_last_appointments})
 
 
 @login_required
