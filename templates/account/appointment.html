@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %} Appointment {% endblock %}
+{% block content %}
+
+    <div style="text-align: center;">
+        <h1 style="color: white">Dashboard</h1>
+        <p style="color: white"> Appointments for {{ patient.name }} {{ patient.surname }} </p>
+    </div>
+
+    <a href="{% url 'dashboard' %}">
+        <button> Return to dashboard </button>
+    </a>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+            <button type="submit">Save appointment</button>
+    </form>
+
+    <div>
+        <p> NEWEST BMI {{ this.BMI }}</p>
+        <p> LAST BMI {{ second_last_appointments.BMI }}</p>
+    </div>
+
+    {% if appointments %}
+        <table style="color: white; background-color: #8B5BCC" align="center">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Weight</th>
+                    <th>BMI</th>
+                    <th>Observations</th>
+                </tr>
+            </thead>
+            {% for a in appointments %}
+                <tbody>
+                    <tr>
+                        <td>{{ a.date }}</td>
+                        <td>{{ a.new_weight }}</td>
+                        <td>{{ a.BMI }}</td>
+                        <td>{{ a.observations }}</td>
+                    </tr>
+                </tbody>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No appointments for patient available.</p>
+    {% endif %}
+{% endblock %}
+
+

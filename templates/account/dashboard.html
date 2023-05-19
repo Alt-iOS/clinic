@@ -11,10 +11,19 @@
     {% endif %}
     </div>
 
+    <a href="{% url 'dashboard_paginated' %}">
+        <button> Paginated view </button>
+    </a>
+
+    <a href="{% url 'dashboard' %}">
+        <button> List view </button>
+    </a>
+
     {% if patients_info %}
         <table style="color: white; background-color: #8B5BCC" align="center">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Name</th>
                     <th>Last Name</th>
                     <th>Sex</th>
@@ -29,7 +38,16 @@
             {% for p in patients_info %}
                 <tbody>
                     <tr>
-                        <td><a href=""></a> {{ p.name }}</td>
+                        <td>
+                            <a href="{% url 'edit_patient' public_id=p.public_id %}">
+                                Edit patient info
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'appointment' public_id=p.public_id %}">
+                                {{ p.name }}
+                            </a>
+                        </td>
                         <td>{{ p.surname }}</td>
                         <td>{{ p.sex }}</td>
                         <td>{{ p.aerobics }}</td>
@@ -44,6 +62,9 @@
         </table>
     {% else %}
         <p>No patient info available.</p>
+    {% endif %}
+    {% if page_obj %}
+            {% include "account/pagination.html" with page=page_obj %}
     {% endif %}
 {% endblock %}
 

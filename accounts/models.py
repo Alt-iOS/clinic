@@ -1,5 +1,6 @@
 import random, string, datetime
 from django.db import models
+from django.urls import reverse
 
 
 # Create your models here.
@@ -13,7 +14,7 @@ class Patient(models.Model):
     aerobics = models.BooleanField(default=False)
     recent_weight = models.FloatField(max_length=6, null=False)
     public_id = models.CharField(max_length=10, null=False, unique=True)
-
+    active = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
         if self.recent_weight is None:
@@ -30,9 +31,13 @@ class Appointment(models.Model):
     observations = models.CharField(max_length=200, null=False)
     BMI = models.FloatField( max_length=3, null=True)
 
+    def get_absolute_url(self):
+        return reverse('appointment', kwargs={'public_id': self.patient.public_id})
+
     def save(self, *args, **kwargs):
         most_recent_appt = Appointment.objects.filter(patient=self.patient).order_by('-date').first()
-        self.patient.recent_weight = most_recent_appt.new_weight
+        if most_recent_appt is not None:
+            self.patient.recent_weight = most_recent_appt.new_weight
         self.patient.save()
-        self.BMI = self.new_weight/self.patient.height ** 2
+        self.BMI = round(self.new_weight/(self.patient.height ** 2), 2)
         super(Appointment, self).save(*args, **kwargs)
