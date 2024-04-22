@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  mysql_db:
+    container_name: mysql_db
+    image: mysql:latest
+    environment:
+      - MYSQL_DATABASE=clinic
+      - MYSQL_ROOT_PASSWORD=123456
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+  app:
+    container_name: clinic-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mysql_db
+volumes:
+  db_data:
+networks:
+  default:
